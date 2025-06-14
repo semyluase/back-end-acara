@@ -18,6 +18,9 @@
   "paths": {
     "/auth/register": {
       "post": {
+        "tags": [
+          "AUTH"
+        ],
         "description": "",
         "responses": {
           "200": {
@@ -28,27 +31,16 @@
           }
         },
         "requestBody": {
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "fullName": {
-                    "example": "any"
-                  },
-                  "username": {
-                    "example": "any"
-                  },
-                  "email": {
-                    "example": "any"
-                  },
-                  "password": {
-                    "example": "any"
-                  },
-                  "confirmPassword": {
-                    "example": "any"
-                  }
-                }
+                "$ref": "#/components/schemas/RegistrationRequest"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/RegistrationRequest"
               }
             }
           }
@@ -57,6 +49,9 @@
     },
     "/auth/login": {
       "post": {
+        "tags": [
+          "AUTH"
+        ],
         "description": "",
         "responses": {
           "200": {
@@ -88,6 +83,9 @@
     },
     "/auth/me": {
       "get": {
+        "tags": [
+          "AUTH"
+        ],
         "description": "",
         "responses": {
           "200": {
@@ -105,6 +103,37 @@
             "bearerAuth": []
           }
         ]
+      }
+    },
+    "/auth/activation": {
+      "post": {
+        "tags": [
+          "AUTH"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ActivationRequest"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/ActivationRequest"
+              }
+            }
+          }
+        }
       }
     }
   },
@@ -130,6 +159,46 @@
         },
         "xml": {
           "name": "LoginRequest"
+        }
+      },
+      "RegistrationRequest": {
+        "type": "object",
+        "properties": {
+          "fullName": {
+            "type": "string",
+            "example": "Semy Luase"
+          },
+          "username": {
+            "type": "string",
+            "example": "semy2025"
+          },
+          "email": {
+            "type": "string",
+            "example": "semy2025@yopmail.com"
+          },
+          "password": {
+            "type": "string",
+            "example": "1234512345"
+          },
+          "confirmPassword": {
+            "type": "string",
+            "example": "1234512345"
+          }
+        },
+        "xml": {
+          "name": "RegistrationRequest"
+        }
+      },
+      "ActivationRequest": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "abcdefg"
+          }
+        },
+        "xml": {
+          "name": "ActivationRequest"
         }
       }
     }

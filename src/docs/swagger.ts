@@ -28,6 +28,16 @@ const doc = {
         identifier: "semydelavega",
         password: "D3l4v3g4",
       },
+      RegistrationRequest: {
+        fullName: "Semy Luase",
+        username: "semy2025",
+        email: "semy2025@yopmail.com",
+        password: "1234512345",
+        confirmPassword: "1234512345",
+      },
+      ActivationRequest: {
+        code: "abcdefg",
+      },
     },
   },
 };
